@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herencia Prototipal</title>
+</head>
+<body><a href="/ejercicios/">Go Back</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    function Hero(name){
+      this.name = name; // name = name;
+    }
+
+    Hero.prototype.saludar = function(){
+      console.log(`Hola, soy ${this.name}`)
+    }
+
+    const zelda = new Hero("Zelda");
+    
+    // Propiedades de la instancia
+    console.group("1. Propiedades de la instancia")
+    console.log("Name:", zelda.name);
+    console.groupEnd();
+
+    // Propiedades de la clase
+    console.group("2. Propiedades de la clase")
+    console.log("Name:", zelda.saludar);
+    console.groupEnd();
+
+    // Propiedades heredadas del más alla
+    console.group("3. Propiedades heredadas del más alla")
+    console.log("Name:", zelda.toString);
+    console.groupEnd();
+  </script>
+
+  
+</body>
+</html>

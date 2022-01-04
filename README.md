@@ -73,9 +73,27 @@ Las funciones **call, apply y bind** son parte del **prototipo Function**. Toda 
 - **functionName.bind():** Recibe como primer y único argumento el this. No ejecuta la función, sólo regresa otra (nueva) función con el nuevo this integrado.
 - **tip:** La C de Call -> Comma, La A de Apply -> Array. Así se pasan los argumentos en cada uno.
 
+#### Prototype
 
+En Javascript todo son objetos, no tenemos clases, no tenemos ese plano para crear objetos.
+
+Todos los objetos “heredan” de un prototipo que a su vez hereda de otro prototipo y así sucesivamente creando lo que se llama la _**prototype chain**_.
+
+La keyword _**new**_ crea un nuevo objeto que “hereda” todas las propiedades del prototype de otro objeto. No confundir prototype con proto que es sólo una propiedad en cada instancía que apunta al prototipo del que hereda.
+
+#### Herencia prototipal
+
+Por default los objetos en JavaScript tienen cómo prototipo a **Object** que es el punto de partida de todos los objetos, es el prototipo padre. Object es la raíz de todo, por lo tanto tiene un prototipo padre undefined.
+
+Cuando se llama a una función o variable que no se encuentra en el mismo objeto que la llamó, se busca en toda la prototype chain hasta encontrarla o regresar undefined.
+
+La función **hasOwnProperty** sirve para verificar si una propiedad es parte del objeto o si viene heredada desde su prototype chain.
+
+_**nameObject.prototype**_ es un objeto donde definimos el prototipo de las instancias de _**nameObject.**_ Es decir las instancias de _**nameObject**_ van a heredar de _**nameObject.prototype.**_
 
 ## 2. Cómo funciona JavaScript
+
+
 ## 3. Fundamentos Intermedios
 ## 4. Fundamentos Avanzados
 ## 5. APIs del DOM

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+<body>
+  <a href="/ejercicios/">Go Back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // Un Objeto cómun y corriente
+      console.group("1. Un Objeto cómun y corriente")
+      const zelda = {
+        name: "Zelda",
+      }
+      zelda.saludar = function(){
+        console.log(`Hola soy ${this.name}`)
+      }
+      zelda.saludar();
+
+      const link = {
+        name: "Link",
+      }
+      link.saludar = function(){
+        console.log(`Hola soy ${this.name}`)
+      }
+      link.saludar();
+      console.groupEnd();
+
+      // Siendo más eficientes A
+      console.group("2. Siendo más eficiente A")
+      function Hero (name){
+        const hero = {
+          name: name,
+        }
+        hero.saludar = function(){
+        console.log(`Hola soy ${this.name}`)
+        }
+        return hero
+      }
+
+      const jorge = Hero("Jorge");
+      jorge.saludar();
+      const carolina = Hero("Carolina"); 
+      carolina.saludar();
+
+      console.groupEnd();
+
+      // Siendo más eficientes B
+      console.group("3. Siendo más eficiente B")
+      const heroMethos = {
+        saludar: function(){
+        console.log(`Me llamo ${this.name}`)
+        }
+      }
+
+      function Hero1(name){
+        const hero = {
+          name: name,
+        }
+        hero.saludar = heroMethos.saludar;
+        return hero
+      }
+      const elvira = Hero1("Elvira");
+      elvira.saludar();
+
+      console.groupEnd();
+
+      //Object.create
+      console.group("4. Siendo más eficiente C: Object.create")
+        
+
+      console.groupEnd();
+
+
+    </script>
+</body>
+</html>
