@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This</title>
+</head>
+<body>
+  <a href="/ejercicios/">Go Back</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    // This en el Global scope = al objeto Window
+    console.group("1. This en el Global scope = Window");
+    console.log("1.1 this is:", this)
+    console.log(`1.2 this is: ${this}`)
+    console.groupEnd();
+
+    // This en el Function Scope
+    console.group("2. This en el Function Scope");
+    function whoIsThis(){
+      return this;
+    }
+    console.log("2.1 whoIsThis():", whoIsThis())
+    console.groupEnd();
+
+    // This en el Function Scope by Strict Mode
+    console.group("3. This en el Function Scope by Strict Mode");
+    function whoIsThisStrictMode(){
+      "use strict";
+      return this;
+    }
+    console.log("3.1 whoIsThisStrictMode():", whoIsThisStrictMode())
+    console.groupEnd();
+
+    // This en el Contexto de un Objeto
+    console.group("4. This en el Contexto de un Objeto");
+    const person = {
+      name: "Jorge",
+      saludar: function(){
+        console.log(`4.1 Hola soy ${name} (Sin this)`)
+        console.log(`4.2 Hola soy ${this.name} (Con this)`)
+      }
+    };
+    person.saludar();
+    console.groupEnd();
+
+    // This cuando sacamos una función de un Objeto
+    console.group("5. This cuando sacamos una función de un Objeto");
+    const person1 = {
+      name: "Jorge",
+      saludar: function(){
+        console.log(`5.1 Hola soy ${name} (Sin this)`)
+        console.log(`5.2 Hola soy ${this.name} (Con this)`)
+      }
+    };
+    // person1.saludar();
+    const accion = person1.saludar();
+    console.log(`5.3: ${accion}`);
+    console.groupEnd();
+
+    // This en el contexto de una Class
+    console.group("6. This en el contexto de una Class");
+    function Person(name){
+      // this = {}
+      // No puedes asirgar this directamente, pero si puedes asignar una propiedad
+      this.name = name;
+    }
+
+    Person.prototype.saludar = function(){ //Así le ponemos métodos al prototipo
+      console.log(`Me llamo ${this.name}`)
+    }
+
+    const angela = new Person("Angela");
+    angela.saludar()
+
+
+
+
+
+    console.groupEnd();
+
+
+
+
+  </script>
+  
+</body>
+</html>
