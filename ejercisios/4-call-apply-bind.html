@@ -10,8 +10,80 @@
   <a href="/ejercicios/">Go Back</a>
     <p><em>Abre la consola</em></p>
 
+    <ul>
+      <li>
+        <button class="call-to-action">Aprender</button>
+      </li>
+      <li>
+        <button class="call-to-action">Aprender Más</button>
+      </li>
+      <li>
+        <button class="call-to-action">Nunca pares de aprender</button>
+      </li>
+    </ul>
+
     <script>
-      
+      // Establecer This usando Call
+      console.group("1. Establecer This usando Call")
+      function saludar(){
+        console.log(`Hola soy ${this.name} ${this.apellido}`)
+      }
+      const jorge = {
+        name: "Jorge",
+        apellido: "Arias"
+      }
+      saludar.call(jorge);
+      console.groupEnd();
+
+      // Establecer This usando Call y recibiendo argumentos
+      console.group("2. Establece This usando Call y recibiendo argumentos")
+      function caminar(metros, direccion){
+        console.log(`${this.name} ${this.apellido} camina ${metros} metros sentido ${direccion}`)
+      }
+      caminar.call(jorge, 500, "Norte");
+      console.groupEnd();
+
+      // Establecer This usando Apply y recibiendo argumentos
+      console.group("3. Establecer This usando Apply y recibiendo argumentos")
+      caminar.apply(jorge, [800, "Sur"]);
+      console.groupEnd();
+
+      // Establecer This usando Bind
+      console.group("4. Establecer This usando Bind")
+      const daniel = {
+        name: "Daniel",
+        apellido: "Alvarez"
+      }
+      saludar.bind(daniel); //Así no funciona
+      const danielSaluda = saludar.bind(daniel);
+      danielSaluda(); // Así si funciona
+      console.groupEnd();
+
+      // Establecer This usando Bind y usando argumentos
+      console.group("5. Establecer This usando Bind y usando argumentos")
+      const danielCamina = caminar.bind(daniel);
+      danielCamina(1000, "Oeste") // Manera A de pasar argumentos
+
+      const danielCaminaB = caminar.bind(daniel, 1500, "Nor-oeste"); // Manera B de pasar argumentos
+      danielCaminaB() 
+
+      // Tip: Se puede pasar argumentos usando las dos maneras al mismo tiempo
+
+      console.groupEnd();
+
+      //  ===========
+      const buttons = document.getElementsByClassName("call-to-action");
+      // buttons.forEach(button => {
+      //   button.onClick = () => alert("Nunca pares de aprender!")
+      // });
+      /*
+       Uncaught TypeError: buttons.forEach is not a function.
+       Este error es porque buttons es un NodeList. Los Node List se parecen a los arreglos
+      */
+     Array.prototype.forEach.call(buttons, button => {
+        button.onClick = () => alert("Nunca pares de aprender!")
+      })
+
 
     </script>
 </body>
