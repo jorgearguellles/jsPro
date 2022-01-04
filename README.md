@@ -46,9 +46,10 @@ Partiendo del módelo Cliente-Servidos de la web, JavaScript trabaja con ambitos
 - En el lado del **Servidos(Backend)**, el ambito global se trabaja con la palabra reservada **...**
 
 #### Clousure / Clausuras
-Combina el poder del Scope con funciones
-
-
+**¿Qué son las Clousures?**
+- Combinando el poder del Scope con funciones creamos algo que se llama _Clousure_
+- Son funciones que regresan una función o un objeto con funciones que mantienen las variables que fueron declaradas fuera de su scope.
+- Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo.
 
 
 ## 2. Cómo funciona JavaScript

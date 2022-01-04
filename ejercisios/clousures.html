@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clousures</title>
+</head>
+<body>
+  <a href="/ejercicios/">Go Back</a>
+  <p><em>Abre la consola</em></p>
+  
+  <script>
+    // 1.
+    let colorVerde = "green"
+    function printColor(){
+      console.log("colorVerde:", colorVerde)
+    }
+    printColor();
+    // 2. IIFE
+    (function(){
+
+      let colorRojo = "red"
+      function printColor(){
+        console.log("colorRojo:",colorRojo)
+      }
+      printColor();
+    })()
+    // 3. Funciones que regresan funciones
+    function makeColorPrinted(color){
+      let colorMessage = `The color is ${color}` 
+      return function(){
+        console.log(colorMessage)
+      }
+    }
+    let greenColorPrinter = makeColorPrinted("Green");
+    console.log("ejecutando la función contenedora:",greenColorPrinter)
+    console.log("Ejecutando la función interna():",greenColorPrinter())
+    //  Variables "Privadas"
+    
+  </script>
+</body>
+</html>
