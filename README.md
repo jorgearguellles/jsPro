@@ -126,8 +126,58 @@ Se usa en:
 - Type checkers: TypeScript, Flow
 - Syntax HightLight
 
+### ¿Cómo funciona el JavaScript Engine?
+
+Una vez tenemos el AST ahora hay que convertirlo a Bytecode.
+Bytecode es como el código assembler pero en lugar de operar en el procesador opera en la máquina virtual V8 del navegador.
+Machine code es el más bajo nivel, es código binario que va directo al procesador.
+El profiler se sitúa en medio del bytecode y el optimizador
+Cada máquina virtual tiene sus particularidades, por ejemplo V8 tiene algo llamado Hot Functions.
+Cuando una sentencia función es ejecutada muy frecuentemente, V8 la denomina como una hot function y hace una optimización que consiste en convertirla a machine code para no tener que interpretarla de nuevo y agilizar su ejecución.
+
+Cada navegador tiene su implementación de JavaScript Engine:
+- SpiderMonkey - Firefox
+- Chackra - Edge
+- JavaScriptCore - Safari
+- V8 - Chrome
+
+![vs](./screenshots/bytecodeVSMachineCode.png)
+
+### Event loop
+
+- [Event loop](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)
+- [JS RunTime Visualization](https://www.jsv9000.app)
+- [JavaScript Visualized: Event Loop](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
+
+El Event Loop hace que Javascript parezca ser multihilo a pesar de que corre en un solo proceso.
+
+Javascript se organiza usando las siguientes estructuras de datos:
+1. **Stack:** Va apilando de forma organizada las diferentes instrucciones que se llaman. Lleva así un rastro de dónde está el programa, en que punto de ejecución nos encontramos. Se comporta como una Pila, **Last In First Out - LIFO**
+2. **Memory Heap:** De forma desorganizada se guarda información de las variables y del scope.
+3. **Schedule Tasks:** Aquí se agregan a la cola, las tareas programadas para su ejecución.
+4. **Task Queue:** Aquí se agregan las tares que ya están listas para pasar al stack y ser ejecutadas. El stack debe estar vacío para que esto suceda. Es una estrucutra de datos que se comporta como una fila, **First In Firts Out - FIFO**
+5. **MicroTask Queue:** Aquí se agregan las promesas. Esta Queue es la que tiene mayor prioridad.
+El Event Loop es un loop que está ejecutando todo el tiempo y pasa periódicamente revisando las queues y el stack moviendo tareas entre estas dos estructuras.
+![vs](./screenshots/jsRuntime.png)
 
 ## 3. Fundamentos Intermedios
+
+## Promesas
+
+- [Await and Async Explained with Diagrams and Examples](https://nikgrozev.com/2017/10/01/async-await/)
+- [Promesas](https://platzi.com/tutoriales/1642-javascript-profesional/12686-promesas-4/)
+- [Leonidas + ejemplo](https://www.youtube.com/watch?v=dRIZNayrcLk)
+
+Para crear las promesas usamos la clase Promise. El constructor de Promise recibe un sólo argumento, un callback con dos parámetros, resolve y reject. resolve es la función a ejecutar cuando se resuelve y reject cuando se rechaza.
+El async/await es sólo syntax sugar de una promesa, por debajo es exactamente lo mismo.
+
+La clase Promise tiene algunos métodos estáticos bastante útiles:
+- Promise.all. Da error si una de las promesas es rechazada.
+- Promise.race. Regresa sólo la promesa que se resuelva primero.
+
+- [Chileno Dev](https://www.youtube.com/watch?v=5XyzLfPBpZs)
+Las promesas son un objeto que represnetan un valor que eventualmente se va a resolver y entonces nosotros vamos a poder acceder a él.
+
 ## 4. Fundamentos Avanzados
 ## 5. APIs del DOM
 ## 6. TypeScript
