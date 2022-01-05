@@ -93,6 +93,39 @@ _**nameObject.prototype**_ es un objeto donde definimos el prototipo de las inst
 
 ## 2. Cómo funciona JavaScript
 
+[Parser bajo el capó](https://esprima.org/demo/parse.html)
+
+El JS Engine recibe el código fuente y lo procesa de la siguiente manera:
+1. Recibe código fuente
+2. El parser descompone y crea tokens que integran al **Abstract Syntax tree (AST).**
+3. Se compila a bytecode y se ejecuta.
+4. Lo que se pueda se optimiza a machine code y se reemplaza el código base.
+
+![jsEngine](./screenshots/jsEngine.png)
+
+### ¿Qué hace un Parser?
+Un parser recibe el código fuente ( el código que escribirmos) y lo analiza para fragmentarlo en partes llamadas **Tokens**, con los cuales creará el **Abstract Syntax Tree - AST**
+
+Un _**SyntaxError**_ es lanzado cuando el motor JavaScript encuentra partes que no forman parte de la sintaxis del lenguaje y esto lo logra gracias a que se tiene un AST generado por el parser.
+
+El parser es del 15% al 20% del proceso de ejecución por lo que hay que usar parser del código justo en el momento que lo necesitamos y no antes de saber si se va a usar o no.
+![jsEngine](./screenshots/parser.png)
+
+Hay dos manearas de hacer Parsing en V8
+![jsEngine](./screenshots/parsing.png)
+
+### ¿Qué es el Abstract Syntax Tree - AST?
+[AST Explorer](https://astexplorer.net)
+
+Es una estructura de datos qué representa un programa.
+Se usa en:
+- JavaScript Engine
+- Bundlers: WebPack, Rollup, Parcel
+- Transpilers: Babel
+- Linters: ESLint, Prettify, Prettier
+- Type checkers: TypeScript, Flow
+- Syntax HightLight
+
 
 ## 3. Fundamentos Intermedios
 ## 4. Fundamentos Avanzados
