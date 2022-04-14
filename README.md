@@ -194,6 +194,8 @@ La clase Promise tiene algunos métodos estáticos bastante útiles:
 
 ### Proxy
 
+El objeto Proxy se usa para definir un comportamiento personalizado para operaciones fundamentales (por ejemplo, para observar propiedades, cuando se asignan, enumeración, invocación de funciones, etc).
+
 ### Generators
 
 ## 5. APIs del DOM
