@@ -2,13 +2,13 @@
 
 ## 1. Repaso de Conceptos Fundamentales
 
-#### Cómo llega un script al navegador
+#### 1.1 Cómo llega un script al navegador
 
 El **DOM** es la representación que hace el navegador de un documento HTML.
 
 El navegador interpreta el archivo HTML y cuando termina de transformarlo al DOM se dispara el evento **DOMContentLoaded** lo que significa que todo el documento está disponible para ser manipulado.
 
-Todo script que carguemos en nuestra página tiene un llamado y una ejecución.
+Todo script que carguemos en nuestra página tiene un llamado(leerlo) y una ejecución.
 
 ##### Formas de poner código JS en el documento HTML
 
@@ -23,7 +23,7 @@ Todo script que carguemos en nuestra página tiene un llamado y una ejecución.
    Hay que tener en cuenta que cuando carga una página y se encuentra un script a ejecutar toda la carga se detiene. Por eso se recomienda agregar tus scripts justo antes de cerrar el body para que todo el documento esté disponible.
    ![Script embebido](./screenshots/defer.png)
 
-#### Scope
+#### 1.2 Scope
 
 - **¿Qué es el Scope?**
   El Scope es el alcanse que tienen las variables en donde están disponibles.
@@ -41,12 +41,18 @@ Todo script que carguemos en nuestra página tiene un llamado y una ejecución.
 - **Module Scope**
   Cuando se denota un script de tipo module con el atributo type="module las variables son limitadas al archivo en el que están declaradas.
 
-Partiendo del módelo Cliente-Servidos de la web, JavaScript trabaja con ambitos globales en cada lado:
+> Partiendo del módelo Cliente-Servidos de la web, JavaScript trabaja con ambitos globales en cada lado:
+>
+> - En el lado del **Cliente(Frontend)**, el ambito global se trabaja con la palabra reservada **window**
+> - En el lado del **Servidos(Backend)**, el ambito global se trabaja con la palabra reservada **...**
 
-- En el lado del **Cliente(Frontend)**, el ambito global se trabaja con la palabra reservada **window**
-- En el lado del **Servidos(Backend)**, el ambito global se trabaja con la palabra reservada **...**
+- Resources:
+  - [Var, Let, and Const – What's the Difference?](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
+  - [Difference between var, let and const](https://medium.com/nerd-for-tech/difference-between-var-let-and-const-7aec1b81da2)
 
-#### Clousure / Clausuras
+![](./screenshots/var-let-const-diff.png)
+
+#### 1.3 Clousure / Clausuras
 
 **¿Qué son las Clousures?**
 
@@ -55,7 +61,7 @@ Partiendo del módelo Cliente-Servidos de la web, JavaScript trabaja con ambitos
 - Es una funcion que retorna otra funcion, ademas recuerda el scope en el que fueron creadas
 - Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo.
 
-#### This
+#### 1.4 This
 
 _**this**_ se refiere a un objeto, ese objeto es el que actualmente está ejecutando un pedazo de código.
 
@@ -65,7 +71,7 @@ No se puede asignar un valor a this directamente y este depende de en que scope 
 - Cuando llamamos a _this_ desde **una función** que está contenida en un objeto, _this_ se hace referencia a ese objeto.
 - Cuando llamamos a _this_ desde una **clase**, se hace referencia a la instancia generada por el constructor.
 
-#### Los métodos call, apply y bind
+#### 1.5 Los métodos call, apply y bind
 
 El objeto this no lo podemos asignar directamente, pero si podemos asignar propiedades de dicho objeto, pero existen tres métodos que nos permites afectar directamente el objeto this.
 
@@ -77,6 +83,7 @@ Las funciones **call, apply y bind** son parte del **prototipo Function**. Toda 
 - **functionName.apply():** Apply hace la misma funcionalidad que Call(), la diferencia está en la manera de pasarle los argumentos.
 - **functionName.bind():** Recibe como primer y único argumento el this. No ejecuta la función, sólo regresa otra (nueva) función con el nuevo this integrado.
 - **tip:** La C de Call -> Comma, La A de Apply -> Array. Así se pasan los argumentos en cada uno.
+- [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 #### Prototype
 
@@ -194,7 +201,8 @@ La clase Promise tiene algunos métodos estáticos bastante útiles:
 
 ### Proxy
 
-El objeto Proxy se usa para definir un comportamiento personalizado para operaciones fundamentales (por ejemplo, para observar propiedades, cuando se asignan, enumeración, invocación de funciones, etc).
+- El objeto Proxy se usa para definir un comportamiento personalizado para operaciones fundamentales (por ejemplo, para observar propiedades, cuando se asignan, enumeración, invocación de funciones, etc).
+- El Proxy es servidor que hace como intermediario en las peticiones de recursos que realiza un cliente a otro servidor!
 
 ### Generators
 
