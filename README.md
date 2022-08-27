@@ -1,5 +1,7 @@
 # jsPro
 
+[Apuntes de un compañero en Platzi](https://github.com/JasanHdz/javascript-professional/tree/master/notes)
+
 ## 1. Repaso de Conceptos Fundamentales
 
 #### 1.1 Cómo llega un script al navegador
@@ -207,6 +209,24 @@ La clase Promise tiene algunos métodos estáticos bastante útiles:
 ### Generators
 
 ## 5. APIs del DOM
+
+### 5.1 Fetch - Cómo cancelar peticiones
+
+Al inicio cuando salia una petición Fecth, no habia manera de detenerla. Entonces para solucionar ese problema, aparece AbortController.
+
+[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) es un feature que permite mandar una señal a una petición Fecth para que se detenga.
+
+### 5.2 IntersectionObserver
+
+[IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) sirve para observar elementos y si cruzan un umbral que nosotros definimos nos lo va a notificar para tomar acción.
+
+El umbral se define por el porcentaje que tiene intersección con el viewport, con la parte visible de nuestra página.
+
+### 5.3 VisibilityChange
+
+[visibilityChange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) forma parte del API del DOM llamado Page Visibility y nos deja saber si el elemento es visible, pude ser usado para ejecutar una acción cuando cambiamos de pestaña. Así podemos ahorrar batería y mejorar la UX.
+
+### 5.4 Service Workers
 
 ## 6. TypeScript
 
